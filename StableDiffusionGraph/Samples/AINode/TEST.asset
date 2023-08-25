@@ -1,0 +1,293 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de77817b1826ac54ea60fad303d975b7, type: 3}
+  m_Name: TEST
+  m_EditorClassIdentifier: 
+  nodes:
+  - rid: 6212577850496122897
+  - rid: 6212577850496122898
+  - rid: 6212577850496122899
+  - rid: 6212577850496122901
+  - rid: 6212577850496122902
+  - rid: 6212577850496122903
+  - rid: 6212577850496122904
+  - rid: 6212577864569585664
+  comments: []
+  assetVersion: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 6212577850496122897
+      type: {class: SDCheckPoint, ns: FernNPRCore.StableDiffusionGraph, asm: Assembly-CSharp}
+      data:
+        id: 1b2a9342-c933-4fa9-aba6-882b69ac7e9b
+        name: SD Check Point
+        graph: {fileID: 11400000}
+        position: {x: -172, y: -256}
+        ports:
+        - name: Model
+          type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          capacity: 1
+          direction: 1
+          connections:
+          - nodeId: 5aef2fed-a4f9-45f2-9bf4-8a1d74881e09
+            portName: Model
+        Model: cyberistic_v10
+        modelNames:
+        - neonIsometric_1
+        - raRender_v20
+        - v1-5-pruned-emaonly
+        - cyberistic_v10
+        currentIndex: 3
+    - rid: 6212577850496122898
+      type: {class: SDStart, ns: FernNPRCore.StableDiffusionGraph, asm: Assembly-CSharp}
+      data:
+        id: 5aef2fed-a4f9-45f2-9bf4-8a1d74881e09
+        name: SD Start
+        graph: {fileID: 11400000}
+        position: {x: 72, y: -256}
+        ports:
+        - name: SDFlowOut
+          type: FernNPRCore.StableDiffusionGraph.SDFlowData, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          capacity: 0
+          direction: 1
+          connections:
+          - nodeId: 7077917a-8a3b-4be0-a768-07199ba3a1b7
+            portName: SDFlowIn
+        - name: Model
+          type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          capacity: 0
+          direction: 0
+          connections:
+          - nodeId: 1b2a9342-c933-4fa9-aba6-882b69ac7e9b
+            portName: Model
+        Model: cyberistic_v10
+        serverURL: http://127.0.0.1:7860
+        overrideSettings: 1
+        useAuth: 1
+        user: 
+        pass: 
+    - rid: 6212577850496122899
+      type: {class: StringNode, ns: FernNPRCore.StableDiffusionGraph, asm: Assembly-CSharp}
+      data:
+        id: 00a2259e-5b3e-49f4-b794-d98ac8cdc789
+        name: String Node
+        graph: {fileID: 11400000}
+        position: {x: -753, y: -21}
+        ports:
+        - name: Text
+          type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          capacity: 1
+          direction: 1
+          connections:
+          - nodeId: 8af18f14-73af-4da4-ba71-4198bd9f2146
+            portName: Prompt
+        Text: a building facade, architecture facade, (sci-fi:1.2), (billboard on
+          facade:1.2), (decorations:1.2), detailed, (windows on facade:1.2), photo,
+          neon, cleared details <lora:cyberpunk:1.2>,a high building, (multi-floor:1.2),
+          (front view:1.2)
+    - rid: 6212577850496122901
+      type: {class: SDPrompt, ns: FernNPRCore.StableDiffusionGraph, asm: Assembly-CSharp}
+      data:
+        id: 5d2e3e07-9062-484b-8177-953e2be65769
+        name: SD Prompt
+        graph: {fileID: 11400000}
+        position: {x: 144.29024, y: -8.999992}
+        ports:
+        - name: Positive
+          type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          capacity: 0
+          direction: 0
+          connections:
+          - nodeId: 8af18f14-73af-4da4-ba71-4198bd9f2146
+            portName: Lora
+        - name: Negative
+          type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          capacity: 0
+          direction: 0
+          connections:
+          - nodeId: 1e36b0d2-e21c-4bd7-b71d-33f6b6258605
+            portName: Text
+        - name: Prompt
+          type: FernNPRCore.StableDiffusionGraph.Prompt, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          capacity: 1
+          direction: 1
+          connections:
+          - nodeId: 7077917a-8a3b-4be0-a768-07199ba3a1b7
+            portName: Prompt
+        Positive: a building facade, architecture facade, (sci-fi:1.2), (billboard
+          on facade:1.2), (decorations:1.2), detailed, (windows on facade:1.2), photo,
+          neon, cleared details <lora:cyberpunk:1.2>,a high building, (multi-floor:1.2),
+          (front view:1.2),<lora::1>
+        Negative: error, bad colors
+    - rid: 6212577850496122902
+      type: {class: SDSamplerNode, ns: FernNPRCore.StableDiffusionGraph, asm: Assembly-CSharp}
+      data:
+        id: 7077917a-8a3b-4be0-a768-07199ba3a1b7
+        name: SD Sampler Node
+        graph: {fileID: 11400000}
+        position: {x: 547.2704, y: -63.540752}
+        ports:
+        - name: SDFlowOut
+          type: FernNPRCore.StableDiffusionGraph.SDFlowData, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          capacity: 0
+          direction: 1
+          connections: []
+        - name: Prompt
+          type: FernNPRCore.StableDiffusionGraph.Prompt, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          capacity: 0
+          direction: 0
+          connections:
+          - nodeId: 5d2e3e07-9062-484b-8177-953e2be65769
+            portName: Prompt
+        - name: ControlNet
+          type: FernNPRCore.StableDiffusionGraph.ControlNetData, Assembly-CSharp,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          capacity: 0
+          direction: 0
+          connections: []
+        - name: Step
+          type: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          capacity: 0
+          direction: 0
+          connections: []
+        - name: CFG
+          type: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          capacity: 0
+          direction: 0
+          connections: []
+        - name: Out Image
+          type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+            PublicKeyToken=null
+          capacity: 1
+          direction: 1
+          connections:
+          - nodeId: d9fe238c-8cfc-4235-82e3-4d0fde41dfaf
+            portName: In Image
+        - name: Seed
+          type: System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          capacity: 1
+          direction: 1
+          connections:
+          - nodeId: d9fe238c-8cfc-4235-82e3-4d0fde41dfaf
+            portName: Seed
+        - name: SDFlowIn
+          type: FernNPRCore.StableDiffusionGraph.SDFlowData, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          capacity: 1
+          direction: 0
+          connections:
+          - nodeId: 5aef2fed-a4f9-45f2-9bf4-8a1d74881e09
+            portName: SDFlowOut
+        Step: 20
+        CFG: 7
+        OutputImage: {fileID: 0}
+        outSeed: 0
+        Seed: -1
+        SamplerMethod: Euler
+    - rid: 6212577850496122903
+      type: {class: SDPreview, ns: FernNPRCore.StableDiffusionGraph, asm: Assembly-CSharp}
+      data:
+        id: d9fe238c-8cfc-4235-82e3-4d0fde41dfaf
+        name: SD Preview
+        graph: {fileID: 11400000}
+        position: {x: 950, y: -64}
+        ports:
+        - name: In Image
+          type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+            PublicKeyToken=null
+          capacity: 0
+          direction: 0
+          connections:
+          - nodeId: 7077917a-8a3b-4be0-a768-07199ba3a1b7
+            portName: Out Image
+        - name: Out
+          type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+            PublicKeyToken=null
+          capacity: 1
+          direction: 1
+          connections: []
+        - name: Seed
+          type: System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          capacity: 0
+          direction: 0
+          connections:
+          - nodeId: 7077917a-8a3b-4be0-a768-07199ba3a1b7
+            portName: Seed
+        Image: {fileID: 0}
+        OutImage: {fileID: 0}
+        seed: 0
+    - rid: 6212577850496122904
+      type: {class: StringNode, ns: FernNPRCore.StableDiffusionGraph, asm: Assembly-CSharp}
+      data:
+        id: 1e36b0d2-e21c-4bd7-b71d-33f6b6258605
+        name: String Node
+        graph: {fileID: 11400000}
+        position: {x: -357, y: 176}
+        ports:
+        - name: Text
+          type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          capacity: 1
+          direction: 1
+          connections:
+          - nodeId: 5d2e3e07-9062-484b-8177-953e2be65769
+            portName: Negative
+        Text: error, bad colors
+    - rid: 6212577864569585664
+      type: {class: SDLora, ns: FernNPRCore.StableDiffusionGraph, asm: Assembly-CSharp}
+      data:
+        id: 8af18f14-73af-4da4-ba71-4198bd9f2146
+        name: SD Lora
+        graph: {fileID: 11400000}
+        position: {x: -282, y: -21}
+        ports:
+        - name: Prompt
+          type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          capacity: 0
+          direction: 0
+          connections:
+          - nodeId: 00a2259e-5b3e-49f4-b794-d98ac8cdc789
+            portName: Text
+        - name: LoRAPrompt
+          type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          capacity: 0
+          direction: 0
+          connections: []
+        - name: Strength
+          type: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          capacity: 0
+          direction: 0
+          connections: []
+        - name: Lora
+          type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          capacity: 1
+          direction: 1
+          connections:
+          - nodeId: 5d2e3e07-9062-484b-8177-953e2be65769
+            portName: Positive
+        prompt: a building facade, architecture facade, (sci-fi:1.2), (billboard
+          on facade:1.2), (decorations:1.2), detailed, (windows on facade:1.2), photo,
+          neon, cleared details <lora:cyberpunk:1.2>,a high building, (multi-floor:1.2),
+          (front view:1.2)
+        loraPrompt: 
+        strength: 1
+        lora: 
+        loraDir: C:\StableDifussion\stable-diffusion-webui\models\Lora
+        loraNames:
+        - Cyberpunk sceneV1
+        - XSarchitectural_35Highgradeironwallexteriorwall
+        currentIndex: 0
+        stableGraph: {fileID: 11400000}
